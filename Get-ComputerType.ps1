@@ -1,0 +1,1 @@
+$computers = Get -ADComputer -Filter *
