@@ -1,0 +1,20 @@
+# Define the source file and archive folder
+$SourceFile = Join-Path -Path $PSScriptRoot -ChildPath 'putty.log'
+$ArchiveFolder = Join-Path -Path $PSScriptRoot -ChildPath 'Archive'
+
+# Check if the Archive folder exists; if not, create it
+if (-not (Test-Path -Path $ArchiveFolder)) {
+    New-Item -ItemType Directory -Path $ArchiveFolder | Out-Null
+}
+
+# Check if the source file exists
+if (Test-Path -Path $SourceFile) {
+    # Define the destination file path
+    $DestinationFile = Join-Path -Path $ArchiveFolder -ChildPath 'putty.log'
+
+    # Copy the file to the Archive folder
+    Copy-Item -Path $SourceFile -Destination $DestinationFile -Force
+    Write-Output "File 'putty.log' has been copied to the 'Archive' folder."
+} else {
+    Write-Output "The file 'putty.log' does not exist in the current directory."
+}
