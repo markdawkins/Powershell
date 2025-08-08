@@ -1,4 +1,4 @@
-# PowerShell Script: Test connectivity to specified URLs
+# PowerShell Script: Test connectivity to specified URLs with delay
 
 # List of URLs to test
 $urls = @(
@@ -21,4 +21,7 @@ foreach ($url in $urls) {
     catch {
         Write-Output "$url : Unable to Connect"
     }
+
+    # Wait 15 seconds before the next URL
+    Start-Sleep -Seconds 15
 }
